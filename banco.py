@@ -67,12 +67,40 @@ if __name__ == "__main__":
     banco.adicionar_conta(ContaBancaria("João", 500))
     banco.adicionar_conta(ContaBancaria("Maria", 1500))
     banco.adicionar_conta(ContaBancaria("Carlos", 300))
+    
+    conta_joao = banco.buscar_conta("joão")
+    if conta_joao:
+        sucesso = conta_joao.depositar(200)
+        if sucesso:
+            print(f"Depósito realizado. Novo saldo: {conta_joao.get_saldo()}")
+        else:
+            print("Valor inválido para depósito.")
 
-    conta = banco.buscar_conta("maria")
-    if conta:
-        print(f"Conta encontrada: {conta}")
+    conta_carlos = banco.buscar_conta("carlos")
+    if conta_carlos:
+        sucesso = conta_carlos.sacar(100)
+        if sucesso:
+            print(f"Saque realizado. Novo saldo: {conta_carlos.get_saldo()}")
+        else:
+            print("Saque não autorizado. Verifique o saldo.")
+
+    conta_maria = banco.buscar_conta("maria")
+    conta_joao = banco.buscar_conta("joão")
+    if conta_maria and conta_joao:
+        sucesso = conta_maria.transferir_para(conta_joao, 250)
+        if sucesso:
+            print("Transferência realizada com sucesso.")
+            print(f"Maria: {conta_maria.get_saldo()}, João: {conta_joao.get_saldo()}")
+        else:
+            print("Transferência falhou.")
+
+    removida = banco.remover_conta_por_titular("carlos")
+    if removida:
+        print("Conta de Carlos removida com sucesso.")
     else:
-        print("Conta não encontrada.")
+        print("Conta não encontrada para remoção.")
+        
+    print(f"O saldo total de todas as contas é: {banco.saldo_total()}")
 
     for conta in banco.listar_contas():
         print(conta)
