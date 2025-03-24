@@ -1,0 +1,17 @@
+RELATÓRIO - MANUTENÇÃO DO SISTEMA BANCÁRIO
+
+1. JUSTIFICATIVAS DAS ALTERAÇÕES:
+- A busca case-insensitive evita falhas por diferença de maiúsculas/minúsculas.
+- Métodos de depósito, saque e transferência são essenciais para um sistema bancário real.
+- O encapsulamento melhora a segurança e integridade dos dados.
+- Os testes garantem que as funcionalidades se comportem como esperado.
+- Aplicação do PEP8.
+
+2. DIFICULDADES ENCONTRADAS:
+- Ajustar a lógica de comparação entre nomes mantendo a clareza do código.
+- Garantir que os métodos respeitassem boas práticas, como validação de entrada.
+
+3. SUGESTÕES DE MELHORIA:
+- Implementar persistência com arquivos ou banco de dados.
+- Criar interface gráfica ou web utilizando algum framework.
+- Adicionar autenticação e/ou controle de usuários como inputs (por exemplo).
