@@ -40,7 +40,12 @@ class Banco:
         self.contas = []
 
     def adicionar_conta(self, conta):
+        nome_novo = conta.get_titular().lower()
+        if any(c.get_titular().lower() == nome_novo for c in self.contas):
+            print(f"Conta com titular '{conta.get_titular()}' já existe. Não foi adicionada.")
+            return False
         self.contas.append(conta)
+        return True
 
     def buscar_conta(self, titular):
         for conta in self.contas:
@@ -64,7 +69,8 @@ class Banco:
 
 if __name__ == "__main__":
     banco = Banco()
-    banco.adicionar_conta(ContaBancaria("João", 500))
+    banco.adicionar_conta(ContaBancaria("Ana", 500))
+    banco.adicionar_conta(ContaBancaria("ana", 500))
     banco.adicionar_conta(ContaBancaria("Maria", 1500))
     banco.adicionar_conta(ContaBancaria("Carlos", 300))
     
